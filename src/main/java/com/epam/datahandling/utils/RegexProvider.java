@@ -1,9 +1,15 @@
 package com.epam.datahandling.utils;
 
-public class RegexProvider {
+import java.util.ResourceBundle;
+
+public final class RegexProvider {
+    public static final ResourceBundle REG_EX_BUNDLE = ResourceBundle.getBundle("regular_expressions");
+
+    private RegexProvider() {
+    }
 
     public static String get(String key) {
-        throw new UnsupportedOperationException("Implement this method");
+        return REG_EX_BUNDLE.getString(key);
     }
 
 }
