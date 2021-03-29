@@ -12,7 +12,7 @@ import java.util.ListIterator;
  * Utility class creating table by input data
  */
 public class TableGenerator {
-    private static final String LINE_NUMBER_HEADER = "№";
+    private static final String LINE_NUMBER_HEADER = "Row number";
     private static final String SENTENCE_HEADER = "Sentence";
     private static final String WORDS_COUNT_HEADER = "Word`s Count";
     private static final String VERTICAL_BAR = "|";
