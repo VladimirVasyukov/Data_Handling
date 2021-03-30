@@ -17,7 +17,7 @@ public class Sentence implements Comparable<Sentence>, Serializable {
 
     public Sentence(String content) {
         this.content = content;
-        setWords();
+        setWords(this.content);
     }
 
     public String getContent() {
@@ -28,8 +28,8 @@ public class Sentence implements Comparable<Sentence>, Serializable {
         return this.words.clone();
     }
 
-    public void setWords() {
-        String[] words = getContent().split(RegexProvider.get(WORDS_DELIMITER_KEY));
+    public void setWords(String content) {
+        String[] words = content.split(RegexProvider.get(WORDS_DELIMITER_KEY));
         int wordsLength = words.length;
         this.words = new Word[wordsLength];
         for (int i = 0; i < wordsLength; i++) {

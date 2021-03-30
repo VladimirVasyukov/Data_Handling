@@ -5,19 +5,19 @@ import com.epam.datahandling.utils.BackupUtils;
 import com.epam.datahandling.utils.TextSerializer;
 import com.epam.datahandling.lexis.Text;
 import com.epam.datahandling.view.View;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 
 public class Controller {
     private static final String SOURCE_FILE_PATH = "src/main/resources/original/book.txt";
     private static final String BACKUP_FILE_PATH = "src/main/resources/backup/book.bak";
     private static final String SERIALIZED_FILE_PATH = "src/main/resources/backup/serializedText.txt";
     private static final File SOURCE_FILE = new File(SOURCE_FILE_PATH);
-    private static final Logger LOG = Logger.getLogger(Controller.class);
+    private static final Logger LOG = LogManager.getLogger(Controller.class);
     private final View view;
     private final TextProcessor textProcessor;
     private final int outputSentenceLength;
@@ -33,10 +33,9 @@ public class Controller {
         try {
             BackupUtils.backup(SOURCE_FILE_PATH, BACKUP_FILE_PATH);
         } catch (FileNotFoundException fileNotFoundException) {
-            LOG.debug(String.format("%s %s", SOURCE_FILE_PATH,
-                "source file not found! Backup has not been created."), fileNotFoundException);
+            LOG.error("source file not found! Backup has not been created.", fileNotFoundException);
         } catch (IOException ioException) {
-            LOG.debug("Unexpected IOException in the backup method", ioException);
+            LOG.error("Unexpected IOException in the backup method", ioException);
         }
     }
 
